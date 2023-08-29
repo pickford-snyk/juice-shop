@@ -4,11 +4,11 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout
         uses: actions/checkout@main
       
       - name: Change to frontend directory
-        run: cd frontend | pwd
+        run: cd ./frontend | pwd
 
       - name: Snyk Monitor
         uses: snyk/actions/setup@master
@@ -16,4 +16,3 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           command: monitor
-          path: ./frontend
