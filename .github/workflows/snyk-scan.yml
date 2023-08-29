@@ -15,6 +15,7 @@ jobs:
 
       - name: Snyk Monitor
         uses: snyk/actions/setup@master
-        run: snyk test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
