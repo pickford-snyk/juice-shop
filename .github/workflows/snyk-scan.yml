@@ -13,10 +13,14 @@ jobs:
       - name: Check directory
         run: pwd
       
-      - name: Run Snyk to check for vulnerabilities
+      - name: Get the snyk node image
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          command: monitor
-          path: ./frontend
+      
+      - name: Do A Snyk Scan
+        run: |
+          cd frontend |
+          snyk test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
