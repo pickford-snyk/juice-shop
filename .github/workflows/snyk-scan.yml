@@ -18,4 +18,5 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          command: sh cd ./frontend | pwd | monitor
+          entryPoint: '/juice-shop/frontend'
+          command: monitor
