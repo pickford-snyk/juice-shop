@@ -19,4 +19,4 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           command: monitor
-          path: ./frontend
+          entryPoint: ./frontend
