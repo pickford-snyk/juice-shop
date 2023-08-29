@@ -4,9 +4,11 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: checkout branch
+      - uses: actions/checkout@main
+      
+      - name: Snyk Monitor
       - uses: snyk/actions/setup@master
-      - name: Snyk monitor
         run: snyk test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
