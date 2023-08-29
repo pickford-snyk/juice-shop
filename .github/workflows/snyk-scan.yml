@@ -5,16 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
-      - uses: actions/checkout@main
+        uses: actions/checkout@main
       
       - name: Change to frontend directory
-      - run: cd frontend
+        run: cd frontend
 
       - name: Print working Directory
-      - run: pwd
+        run: pwd
 
       - name: Snyk Monitor
-      - uses: snyk/actions/setup@master
+        uses: snyk/actions/setup@master
         run: snyk test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
