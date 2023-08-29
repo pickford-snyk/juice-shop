@@ -8,7 +8,10 @@ jobs:
         uses: actions/checkout@main
       
       - name: Change to frontend directory
-        run: cd ./frontend | pwd
+        run: cd ./frontend
+
+      - name: Check directory
+        run: cd ./frontend
 
       - name: Snyk Monitor
         uses: snyk/actions/setup@master
