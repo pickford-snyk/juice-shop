@@ -8,13 +8,11 @@ jobs:
         uses: actions/checkout@main
       
       - name: Change to frontend directory
-        run: cd frontend
-
-      - name: Print working Directory
-        run: pwd
+        run: cd frontend | pwd
 
       - name: Snyk Monitor
         uses: snyk/actions/setup@master
+        working-directory: ./frontend
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
