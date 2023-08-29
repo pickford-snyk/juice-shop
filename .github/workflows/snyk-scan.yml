@@ -4,9 +4,15 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout branch
+      - name: Checkout branch
       - uses: actions/checkout@main
       
+      - name: Change to frontend directory
+      - run: cd frontend
+
+      - name: Print working Directory
+      - run: pwd
+
       - name: Snyk Monitor
       - uses: snyk/actions/setup@master
         run: snyk test
