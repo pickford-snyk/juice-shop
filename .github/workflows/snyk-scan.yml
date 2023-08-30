@@ -8,19 +8,14 @@ jobs:
         uses: actions/checkout@main
       
       - name: Change to frontend directory
-        run: cd ./frontend
-
-      - name: Check directory
-        run: pwd
+        run: |
+          pwd
+          cd frontend
+          pwd
       
-      - name: Get the snyk node image
+      - name: Do a Scan with Snyk Node Image
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      
-      - name: Do A Snyk Scan
-        run: |
-          cd frontend |
-          snyk test
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        command:
+          test
