@@ -12,3 +12,13 @@ jobs:
       - name: Setup Authentication
         run: |
           snyk auth ${{ secrets.SNYK_TOKEN }}
+      
+      - name: See repo content
+        run: |
+          pwd
+          ls
+    
+      - name: Run a Snyk Scan
+        run: |
+          snyk test
+      
