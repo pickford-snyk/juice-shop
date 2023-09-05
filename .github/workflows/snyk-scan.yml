@@ -9,6 +9,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
       
-      - name: Setup Version
+      - name: Setup Authentication
         run: |
-          snyk --version
+          snyk auth ${{ secrets.SNYK_TOKEN }}
