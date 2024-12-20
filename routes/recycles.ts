@@ -13,8 +13,8 @@ exports.getRecycleItem = () => (req: Request, res: Response) => {
     where: {
       id: JSON.parse(req.params.id)
     }
-  }).then((Recycle) => {
-    return res.send(utils.queryResultToJson(Recycle))
+  }).then((Recycle) => {s
+    return res.json(utils.queryResultToJson(Recycle))
   })
 }
 
