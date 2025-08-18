@@ -170,7 +170,7 @@
     "sanitize-filename": "^1.6.3",
     "sanitize-html": "1.4.2",
     "semver": "^7.3.2",
-    "sequelize": "~6.9.0",
+    "sequelize": "~6.37.7",
     "sequelize-notupdate-attributes": "^1.0.0",
     "serve-index": "^1.9.1",
     "sqlite3": "^5.0.0",
