@@ -97,8 +97,10 @@ const delivery = require('./routes/delivery')
 const deluxe = require('./routes/deluxe')
 const memory = require('./routes/memory')
 const chatbot = require('./routes/chatbot')
+const productAnalytics = require('./routes/productAnalytics')
 const locales = require('./data/static/locales.json')
 const i18n = require('i18n')
+import { getTodos, createTodo, updateTodo, deleteTodo } from './routes/todo'
 
 const appName = config.get('application.customMetricsPrefix')
 const startupGauge = new client.Gauge({
@@ -537,6 +539,13 @@ restoreOverwrittenFilesWithOriginals().then(() => {
   app.get('/rest/memories', memory.getMemories())
   app.get('/rest/chatbot/status', chatbot.status())
   app.post('/rest/chatbot/respond', chatbot.process())
+
+  /* Todo API */
+  app.get('/api/todos', getTodos)
+  app.post('/api/todos', createTodo)
+  app.put('/api/todos/:id', updateTodo)
+  app.delete('/api/todos/:id', deleteTodo)
+
   /* NoSQL API endpoints */
   app.get('/rest/products/:id/reviews', showProductReviews())
   app.put('/rest/products/:id/reviews', createProductReviews())
@@ -545,6 +554,13 @@ restoreOverwrittenFilesWithOriginals().then(() => {
 
   /* B2B Order API */
   app.post('/b2b/v2/orders', b2bOrder())
+
+  /* Product Analytics API */
+  app.get('/api/analytics/products/:id', security.isAuthorized(), productAnalytics.getProductAnalytics())
+  app.get('/api/analytics/dashboard', security.isAuthorized(), productAnalytics.getAnalyticsDashboard())
+  app.get('/api/analytics/keywords', security.isAuthorized(), productAnalytics.getTrendingKeywords())
+  app.post('/api/analytics/comparison', security.isAuthorized(), productAnalytics.getProductComparison())
+  app.get('/api/analytics/search', security.isAuthorized(), productAnalytics.searchProductAnalytics())
 
   /* File Serving */
   app.get('/the/devs/are/so/funny/they/hid/an/easter/egg/within/the/easter/egg', easterEgg())
