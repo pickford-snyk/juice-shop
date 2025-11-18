@@ -9,7 +9,7 @@
     "webappsec",
     "owasp",
     "pentest",
-    "pentesting",
+    "sequelize": "^6.19.1",
     "security",
     "vulnerable",
     "vulnerability",
