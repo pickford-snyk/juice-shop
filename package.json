@@ -10,7 +10,7 @@
     "owasp",
     "pentest",
     "pentesting",
-    "security",
+    "vm2": "^3.9.19"
     "vulnerable",
     "vulnerability",
     "broken",
