@@ -1,0 +1,21 @@
+name: Snyk Open Source Scan
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  snyk-os:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Snyk
+        uses: snyk/actions/setup@master
+      - name: Snyk Test
+        run: snyk test --severity-threshold=high --org=my-org
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Snyk Monitor
+        run: snyk monitor --org=my-org
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
