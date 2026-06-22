@@ -6,6 +6,10 @@
 
 @import 'theme';
 
+* {
+  font-family: "Times New Roman", Times, serif;
+}
+
 @mixin link-theme($theme) {
   a:link,
   a:visited {
